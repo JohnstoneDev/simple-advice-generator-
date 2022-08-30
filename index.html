@@ -21,8 +21,8 @@
                                 </h5>
 
                                 <div id="advice-text" class="card-text"></div>
-                                <div class="text-center bg-dark card-footer">
 
+                                <div class="text-center bg-dark card-footer">
                                     <button id="generate-advice" class="btn btn-primary" onclick="newAdvice()">
                                         <i class="fa fa-comment"></i> Get Advice
                                     </button>
@@ -30,7 +30,17 @@
                                     <button class="btn btn-success" class="btn btn-success" onclick="copyAdvice()">
                                         <i class="fa fa-clipboard"></i>Copy
                                     </button>
+                                    
                                 </div>
+
+                                <form action="#">
+                                    <div class="form-group text-left">
+                                        <label for="personal-mantra">Personal Quote</label>
+                                        <input type="text" class="form-control" id="personal-quote" aria-describedby="emailHelp">
+                                        <small id="advice" class="form-text text-muted">have a personal mantra?</small>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+                                </form>
                         </div>
                     </div>
                 </div>

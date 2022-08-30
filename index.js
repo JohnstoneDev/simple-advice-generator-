@@ -1,3 +1,5 @@
+let adviceField = document.getElementById('advice-text');
+let quoteIDField = document.getElementById("advice-id")
 
 async function getAdvice(){
     let url = 'https://api.adviceslip.com/advice';
@@ -18,8 +20,8 @@ async function addAdvice(){
     let adviceNumber = advice.slip.id;
     let adviceMessage = advice.slip.advice;
     
-    document.getElementById('advice-id').innerHTML = adviceNumber;
-    document.getElementById('advice-text').innerText = adviceMessage ;
+    quoteIDField.innerHTML = adviceNumber;
+    adviceField.innerHTML  = adviceMessage ;
 }
 
 function newAdvice(){
@@ -33,6 +35,28 @@ function copyAdvice(){
 
     alert(`Copied \"${copiedText}"\ to clipboard.`);
 }
+
+const submitButton = document.getElementById("submit-button");
+const inputElement = document.getElementById("personal-quote");
+let personalQuote = "";
+
+function handleChange(event){
+    event.preventDefault();
+    personalQuote = event.target.value;
+    console.log(personalQuote);
+    return personalQuote;
+}
+
+inputElement.addEventListener("change",handleChange);
+
+function handleSubmit(event){
+    event.preventDefault();
+    adviceField.innerHTML = personalQuote;
+    quoteIDField.innerHTML = Math.floor(Math.random() * 100);
+    inputElement.value = "";
+}
+
+submitButton.addEventListener("click",handleSubmit);
 
 const init = () => {
     addAdvice();
