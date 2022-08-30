@@ -1,4 +1,4 @@
-# Simple Random advice generator.
+# Simple Random Advice Generator.
 
 ### This project uses bootstrap and vanilla javascript to create a random advice generator
 
