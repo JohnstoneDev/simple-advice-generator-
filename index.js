@@ -43,17 +43,22 @@ let personalQuote = "";
 function handleChange(event){
     event.preventDefault();
     personalQuote = event.target.value;
-    console.log(personalQuote);
-    return personalQuote;
+        if(personalQuote != ""){
+            return personalQuote;
+        }
 }
+
 
 inputElement.addEventListener("change",handleChange);
 
 function handleSubmit(event){
     event.preventDefault();
-    adviceField.innerHTML = personalQuote;
-    quoteIDField.innerHTML = Math.floor(Math.random() * 100);
-    inputElement.value = "";
+    if(personalQuote !== "" && personalQuote !== " "){
+        adviceField.innerHTML = personalQuote;
+        quoteIDField.innerHTML = Math.floor(Math.random() * 100);
+        inputElement.value = "";
+    }
+    else {alert("Can't submit empty value")}
 }
 
 submitButton.addEventListener("click",handleSubmit);
