@@ -1,5 +1,11 @@
+// Get elements in the page that wil receive and update Data from the API
+// and store them in global variables.
+
 let adviceField = document.getElementById('advice-text');
-let quoteIDField = document.getElementById("advice-id")
+let quoteIDField = document.getElementById("advice-id");
+
+// Asynchronous javascript function that fetches the resources from the API and 
+// returns a promise to be used by another async function
 
 async function getAdvice(){
     let url = 'https://api.adviceslip.com/advice';
@@ -14,6 +20,9 @@ async function getAdvice(){
     }
 }
 
+// asynchronous function that calls getAdvice() evaluates the response 
+// and converts into useful data that is then populated into the page 
+// using the variables created on line 1.
 
 async function addAdvice(){
     let advice = await getAdvice();
@@ -24,10 +33,18 @@ async function addAdvice(){
     adviceField.innerHTML  = adviceMessage ;
 }
 
+// Function that calls both functions and finishes the implementation
+// done here to prevent calling it from the init function and the 
+// clickabe elements directly. 
+
 function newAdvice(){
     getAdvice();
     addAdvice();
 }
+
+
+// function that copies advice to the browsers keyboard and alerts the user
+// when its done
 
 function copyAdvice(){
     let copiedText = document.getElementById("advice-text").innerHTML;
@@ -36,9 +53,15 @@ function copyAdvice(){
     alert(`Copied \"${copiedText}"\ to clipboard.`);
 }
 
+// Get submt button and the input element from the page
+// declare a variable that will be used to store the quote typed in to the 
+// input element
+
 const submitButton = document.getElementById("submit-button");
 const inputElement = document.getElementById("personal-quote");
 let personalQuote = "";
+
+// create an event handler for the input element and call it.
 
 function handleChange(event){
     event.preventDefault();
@@ -48,8 +71,9 @@ function handleChange(event){
         }
 }
 
-
 inputElement.addEventListener("change",handleChange);
+
+// create an event handler for the form and call it on the element
 
 function handleSubmit(event){
     event.preventDefault();
@@ -62,6 +86,10 @@ function handleSubmit(event){
 }
 
 submitButton.addEventListener("click",handleSubmit);
+
+// function that should run immediately the page loads;
+// it calls the addAdvice function that performs the deliverables 
+// on the page. 
 
 const init = () => {
     addAdvice();
