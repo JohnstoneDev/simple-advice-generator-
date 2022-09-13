@@ -95,4 +95,6 @@ const init = () => {
     addAdvice();
 }
 
+//Mount the event listener for the initial load.
+
 document.addEventListener("DOMContentLoaded",init);
